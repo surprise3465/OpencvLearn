@@ -1,34 +1,22 @@
 #include <QCoreApplication>
 #include <QThread>
 #include <QDebug>
+// opencv
+#include "opencv2/opencv.hpp"
+#include "opencv2/core/core.hpp"
+#include "opencv2/highgui/highgui.hpp"
+#include "opencv2/xphoto.hpp"
+// opencv_contrib
+#include <opencv2/xphoto.hpp>
+#include <opencv2/ximgproc.hpp>
+#include <opencv2/calib3d.hpp>
 
 #define CVUI_IMPLEMENTATION
-#include "cvui.h"
-
-#include "opencv2/opencv.hpp"
+#include "../cvui.h"
 
 using namespace cv;
 using namespace cvui;
 using namespace std;
-
-void testBaseDraw();
-void testCommonOperate();
-void testAffineMap();
-void testContrastAndBrightness();
-void testCvuiRunNormal();
-void testROIAndBlend();
-void testSplitAndMerge();
-void testBoxFilter();
-int main(int argc, char *argv[])
-{
-    QCoreApplication a(argc, argv);
-
-//    Mat image = imread("E:/workspace/sample/lena.tiff");
-//    imshow("OutPut",image);
-//    testBaseDraw();
-    testBoxFilter();
-    return a.exec();
-}
 
 void testCvuiRunNormal()
 {
@@ -695,10 +683,9 @@ void testSplitAndMerge()
 
 }
 
-
 void testBoxFilter()
 {
-    QString fileName1 = "E:/workspace/sample/lena(1).tiff";
+    QString fileName1 = "D:/workspace/sample/lena(1).tiff";
     cv::Mat matSrc = cv::imread(fileName1.toStdString());
 
     cv::String windowName = "testBoxFilter";
@@ -759,3 +746,11 @@ void testBoxFilter()
         }
     }
 }
+
+int main(int argc, char *argv[])
+{
+    QCoreApplication a(argc, argv);
+    testBoxFilter();
+    return a.exec();
+}
+
